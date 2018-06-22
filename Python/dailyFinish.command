@@ -40,6 +40,7 @@ def getPath():
         scriptPath = "/Users/chenshuao/Documents/workspaces/github/Script"
         codeSnippetPath = os.path.join(userDataPath,'CodeSnippets')
 
+#上传CodeSnippets
 def commitCodeSnippets():
     print "#####提交codeSnippets到git"
     os.chdir(codeSnippetPath)
@@ -47,6 +48,7 @@ def commitCodeSnippets():
     os.system('git commit -m \'upload Codesnippets\'')
     os.system('git push')
 
+#上传cript
 def commitScript():
     print "#####提交Script到git"
     os.chdir(scriptPath)
