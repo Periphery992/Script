@@ -15,7 +15,7 @@ scriptPath = ''      #script本地路径
 def main():
 
     getPath()
-    gitCloneOrPullCodesnippet()
+    gitCloneOrPullCodeSnippet()
     gitCloneOrPullScript()
 
 def getPath():
@@ -39,10 +39,11 @@ def getPath():
         scriptPath = "/Users/chenshuao/Documents/workspaces/github/Script"
         codeSnippetPath = os.path.join(userDataPath,'CodeSnippets')
 
-#clone或者更新本地Codesnippet
-def gitCloneOrPullCodesnippet():
+#clone或者更新本地CodeSnippet
+def gitCloneOrPullCodeSnippet():
 
     gitFilePath = os.path.join(codeSnippetPath,'.git')
+    #codeSnippet路径下有.git文件，更新本地codeSnippets
     if os.path.exists(gitFilePath):
         print '#####git CodeSnippets pull'
         os.chdir(codeSnippetPath)
@@ -59,6 +60,7 @@ def gitCloneOrPullCodesnippet():
 def gitCloneOrPullScript():
 
     gitFilePath = os.path.join(scriptPath,'.git')
+    #Script路径下有.git文件，更新本地Script
     if os.path.exists(gitFilePath):
         print '#####git pull script'
         os.chdir(scriptPath)
