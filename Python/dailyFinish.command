@@ -14,6 +14,7 @@ scriptPath = ''      #script本地路径
 def main():
 
     getPath()
+    changeFileName()
 
     commitCodeSnippets()
     commitScript()
@@ -39,6 +40,25 @@ def getPath():
         githubPath = "/Users/chenshuao/Documents/workspaces/github"
         scriptPath = "/Users/chenshuao/Documents/workspaces/github/Script"
         codeSnippetPath = os.path.join(userDataPath,'CodeSnippets')
+
+
+def changeFileName():
+
+    for fpath,dirs,fs in os.walk(codeSnippetPath):
+        for fname in fs:
+            if ".codesnippet" in fname:
+                f = open(os.path.join(codeSnippetPath,fname),'r')
+                flist = f.readlines()
+                i = 0
+                for line in flist:
+                    if "IDECodeSnippetCompletionPrefix" in line:
+                        i = i+1
+                        break
+                    i = i+1
+                tagline = flist[i]
+                name = tagline[9:len(tagline)-10]
+                newname = name+".codesnippet"
+                os.rename(os.path.join(codeSnippetPath,fname),os.path.join(codeSnippetPath,newname))
 
 #上传CodeSnippets
 def commitCodeSnippets():
